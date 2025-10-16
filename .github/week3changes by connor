@@ -1,0 +1,247 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>435 Group B Inventory App</title>
+  <style>
+    :root {
+      --bg: #25c3ce;
+      --panel: #ffffff;
+      --ink: #0f172a;
+      --shadow: 0 8px 24px rgba(2,8,23,.15);
+      --accent: #0ea5e9;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    aside {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 24px;
+      height: 100vh;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: stretch;
+    }
+
+    .brand {
+      font-weight: 800;
+      margin-bottom: 24px;
+      text-align: left;
+      font-size: 1.2rem;
+    }
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .menu a {
+      display: block;
+      background: #fff;
+      padding: 10px 12px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--ink);
+      box-shadow: var(--shadow);
+      text-align: center;
+      font-weight: 500;
+      border: 2px solid transparent;
+      transition: 0.3s;
+    }
+
+    .menu a:hover {
+      background: #f0f9ff;
+    }
+
+    .menu a.active {
+      border-color: var(--accent);
+    }
+
+    /* Main content */
+    main {
+      padding: 40px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: 32px;
+      width: 100%;
+    }
+
+    h1 {
+      margin-top: 0;
+      font-size: 2rem;
+      color: #0f172a;
+    }
+
+    /* About page */
+    .lead { margin: 0.25rem 0 1rem; }
+    .team-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 12px;
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0 0;
+    }
+    .team-list li {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 12px;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    /* View Items grid */
+    .header {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: 20px 24px;
+      margin-bottom: 18px;
+    }
+
+    .item-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .item-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 16px;
+      text-align: left;
+      box-shadow: var(--shadow);
+    }
+
+    .item-card h3 { margin: 0 0 6px; font-size: 1.1rem; }
+    .item-card p { margin: 0; color: #475569; }
+
+    section[hidden] { display: none !important; }
+
+    @media(max-width:900px) {
+      body { grid-template-columns: 1fr; }
+      aside { position: static; height: auto; flex-direction: row; }
+      .menu { flex-direction: row; justify-content: space-around; width: 100%; }
+      main { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <aside>
+    <div class="brand">435 Group B</div>
+    <nav class="menu" id="sideNav">
+      <a href="#view-items" data-target="view-items" class="active">View Items</a>
+      <a href="#about" data-target="about">About The Team</a>
+    </nav>
+  </aside>
+
+  <main>
+    <div class="card">
+      <!-- View Items Section -->
+      <section id="view-items">
+        <div class="header">
+          <h1>All Items</h1>
+          <p>Browse your inventory items.</p>
+        </div>
+
+        <div class="item-grid">
+          <div class="item-card">
+            <h3>Laptop</h3>
+            <p>Category: Electronics</p>
+            <p>Qty: 4</p>
+          </div>
+          <div class="item-card">
+            <h3>Printer Ink</h3>
+            <p>Category: Office Supplies</p>
+            <p>Qty: 12</p>
+          </div>
+          <div class="item-card">
+            <h3>Cleaning Spray</h3>
+            <p>Category: Maintenance</p>
+            <p>Qty: 6</p>
+          </div>
+          <div class="item-card">
+            <h3>Headphones</h3>
+            <p>Category: Audio</p>
+            <p>Qty: 8</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" hidden>
+        <h1>Meet Our Team</h1>
+        <p class="lead">Get to know the people behind the Advanced Inventory App.</p>
+
+        <h2>Who We Are</h2>
+        <p>
+          We are a team of students collaborating on our senior project to develop an
+          advanced inventory app for household supply tracking. This project is a web-based
+          app meant to help small businesses, collectors, or everyday people stay organized.
+          With the proper use of inventory tracking, life can become a lot easier.
+        </p>
+
+        <h2>Team Members</h2>
+        <ul class="team-list" id="teamlist">
+          <li>Ivan</li>
+          <li>Damian</li>
+          <li>Connor</li>
+          <li>Devin</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    // Hash router for switching sections
+    const links = Array.from(document.querySelectorAll('#sideNav a'));
+    const sections = {
+      'view-items': document.getElementById('view-items'),
+      about: document.getElementById('about')
+    };
+
+    function showSection(name) {
+      Object.entries(sections).forEach(([key, el]) => {
+        if (!el) return;
+        el.hidden = key !== name;
+      });
+      links.forEach(a => a.classList.toggle('active', a.dataset.target === name));
+    }
+
+    function handleHash() {
+      const hash = (location.hash || '#view-items').replace('#', '');
+      if (sections[hash]) {
+        showSection(hash);
+      } else {
+        showSection('view-items');
+      }
+    }
+
+    window.addEventListener('hashchange', handleHash);
+    handleHash();
+  </script>
+</body>
+</html>
